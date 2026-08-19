@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="FutureBankingDashboard.Infrastructure/FutureBankingDashboard.Infrastructure.csproj" Id="1c4f0be6-2b34-484d-8cc7-8c9c1ba8580e" />
+  <Project Path="FutureBankingDashboard.Library/FutureBankingDashboard.Library.csproj" Id="bd70ec90-717d-4ec2-9414-a72cfe3ffabf" />
+  <Project Path="FutureBankingDashboard.Services/FutureBankingDashboard.Services.csproj" Id="ed87bb27-f9ed-4925-b1cd-c3b6d3ffe2a0" />
+</Solution>
