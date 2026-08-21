@@ -1,0 +1,6 @@
+@FutureBankingDashboard.API_HostAddress = http://localhost:5263
+
+GET {{FutureBankingDashboard.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
