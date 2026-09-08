@@ -29,13 +29,13 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// ⭐ SEEDING + MIGRATIONS ⭐
-using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    db.Database.Migrate();      // Kør migrations
-    DataSeeder.Seed(db);        // Indsæt mock-data
-}
+// SEEDING + MIGRATIONS 
+//using (var scope = app.Services.CreateScope())
+//{
+    //var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    //db.Database.Migrate();      // Kør migrations
+   //DataSeeder.Seed(db);        // Indsæt mock-data
+//}
 
 if (app.Environment.IsDevelopment())
 {

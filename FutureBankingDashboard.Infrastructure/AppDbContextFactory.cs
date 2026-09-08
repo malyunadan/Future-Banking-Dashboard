@@ -10,12 +10,12 @@ namespace FutureBankingDashboard.Infrastructure
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
 
             optionsBuilder.UseSqlServer(
-                "Server=tcp:futurebankingserver.database.windows.net,1433;Initial Catalog=FutureDB2;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
-
+                "Server=(localdb)\\MSSQLLocalDB;Database=FutureBankDB;Trusted_Connection=True;"
             );
 
             return new AppDbContext(optionsBuilder.Options);
         }
     }
 }
+
 

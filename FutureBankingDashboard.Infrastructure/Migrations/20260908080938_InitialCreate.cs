@@ -2,6 +2,8 @@
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace FutureBankingDashboard.Infrastructure.Migrations
 {
     /// <inheritdoc />
@@ -71,6 +73,54 @@ namespace FutureBankingDashboard.Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Sustainability", x => x.Id);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Economy",
+                columns: new[] { "Id", "Balance", "CompanyId", "Expenses", "Income" },
+                values: new object[,]
+                {
+                    { 1, 40000m, 1, 80000m, 120000m },
+                    { 2, 45000m, 1, 85000m, 130000m },
+                    { 3, 43000m, 1, 82000m, 125000m },
+                    { 4, 50000m, 1, 90000m, 140000m },
+                    { 5, 55000m, 1, 95000m, 150000m }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Funding",
+                columns: new[] { "Id", "ApplicationUrl", "Description", "RequiredCo2Score", "Title" },
+                values: new object[,]
+                {
+                    { 1, "https://example.com/omstillingspulje", "Støtte til virksomheder der reducerer CO2‑udledning.", "C", "Grøn Omstillingspulje" },
+                    { 2, "https://example.com/energi", "Tilskud til energieffektive løsninger.", "B", "Energiforbedringsstøtte" },
+                    { 3, "https://example.com/digital", "Funding til digitale grønne projekter.", "B", "Digital Grøn Innovation" },
+                    { 4, "https://example.com/smv", "Støtte til små og mellemstore virksomheder.", "D", "SMV Grøn" },
+                    { 5, "https://example.com/eu", "EU‑tilskud til klimaprojekter.", "A", "EU KlimaFond" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Recommendations",
+                columns: new[] { "Id", "CompanyId", "Priority", "Text" },
+                values: new object[,]
+                {
+                    { 1, 1, 1, "Reducer energiforbruget i produktionen." },
+                    { 2, 1, 2, "Skift til grønne leverandører." },
+                    { 3, 1, 3, "Invester i solceller." },
+                    { 4, 1, 2, "Optimer transportlogistik." },
+                    { 5, 1, 1, "Implementér CO2‑overvågning." }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Sustainability",
+                columns: new[] { "Id", "Co2Score", "CompanyId", "GreenEnergiPercentage", "MonthlyEmission" },
+                values: new object[,]
+                {
+                    { 1, "D", 1, 35, 1400m },
+                    { 2, "C", 1, 38, 1350m },
+                    { 3, "C", 1, 40, 1300m },
+                    { 4, "B", 1, 43, 1250m },
+                    { 5, "B", 1, 45, 1200m }
                 });
         }
 
