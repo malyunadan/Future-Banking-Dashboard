@@ -9,19 +9,33 @@ var builder = WebApplication.CreateBuilder(args);
 // Controllers
 builder.Services.AddControllers();
 
-// DbContext
+// DbContext + Retry on Failure + MigrationsAssembly
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection"),
-        b => b.MigrationsAssembly("FutureBankingDashboard.Infrastructure")
+        sqlOptions =>
+        {
+            sqlOptions.MigrationsAssembly("FutureBankingDashboard.Infrastructure");
+            sqlOptions.EnableRetryOnFailure(
+                maxRetryCount: 5,
+                maxRetryDelay: TimeSpan.FromSeconds(10),
+                errorNumbersToAdd: null
+            );
+        }
     )
 );
 
-// Services
+// Repositories
 builder.Services.AddScoped<IEconomyRepository, EconomyRepository>();
 builder.Services.AddScoped<ISustainabilityRepository, SustainabilityRepository>();
 builder.Services.AddScoped<IFundingRepository, FundingRepository>();
 builder.Services.AddScoped<IRecommendationRepository, RecommendationRepository>();
+
+// Services
+builder.Services.AddScoped<IEconomyService, EconomyService>();
+builder.Services.AddScoped<ISustainabilityService, SustainabilityService>();
+builder.Services.AddScoped<IFundingService, FundingService>();
+builder.Services.AddScoped<IRecommendationService, RecommendationService>();
 
 // Swagger
 builder.Services.AddEndpointsApiExplorer();
@@ -29,20 +43,16 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// SEEDING + MIGRATIONS 
-//using (var scope = app.Services.CreateScope())
-//{
-    //var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    //db.Database.Migrate();      // Kør migrations
-   //DataSeeder.Seed(db);        // Indsæt mock-data
-//}
-
+// Swagger UI
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
+// Middleware
 app.UseHttpsRedirection();
 app.MapControllers();
+
 app.Run();
+

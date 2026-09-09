@@ -16,11 +16,8 @@ namespace FutureBankingDashboard.Infrastructure.Repositories
             _context = context;
         }
 
-        public EconomyModel GetEconomy(int companyId)
-        {
-            return _context.Economy
-                .FirstOrDefault(e => e.CompanyId == companyId);
-        }
+        public EconomyModel GetEconomy(int companyId) => _context.Economy
+                .FirstOrDefault(e => e.CompanyId == companyId); /// fejl
 
         public void AddEconomy(EconomyModel model)
         {

@@ -6,6 +6,7 @@ namespace FutureBankingDashboard.Library.DTO
 {
     public class FundingDto
     {
+        public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string ApplicationUrl { get; set; }

@@ -16,10 +16,7 @@ namespace FutureBankingDashboard.Infrastructure.Repositories
             _context = context;
         }
 
-        public IEnumerable<FundingModel> GetAllFunding()
-        {
-            return _context.Funding.ToList();
-        }
+        public IEnumerable<FundingModel> GetAllFunding() => _context.Funding.ToList();
 
         public FundingModel GetFundingById(int id)
         {

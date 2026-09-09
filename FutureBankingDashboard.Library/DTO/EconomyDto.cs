@@ -6,6 +6,10 @@ namespace FutureBankingDashboard.Library.DTO
 {
     public class EconomyDto
     {
+        public int Id { get; set; }
+        public int CompanyId { get; set; }
+
+        // Fra databasen
         public decimal Income { get; set; }
         public decimal Expenses { get; set; }
         public decimal Balance { get; set; }

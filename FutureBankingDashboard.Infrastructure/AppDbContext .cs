@@ -24,6 +24,10 @@ namespace FutureBankingDashboard.Infrastructure
             modelBuilder.Entity<FundingModel>().ToTable("Funding");
             modelBuilder.Entity<RecommendationModel>().ToTable("Recommendations");
 
+            // Ignorer IsRelevant (vigtigt!)
+            modelBuilder.Entity<FundingModel>()
+                .Ignore(f => f.IsRelevant);
+
             // SEED DATA
 
             modelBuilder.Entity<EconomyModel>().HasData(

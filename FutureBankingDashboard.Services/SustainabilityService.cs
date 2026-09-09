@@ -24,6 +24,8 @@ namespace FutureBankingDashboard.Services
 
             return new SustainabilityDto
             {
+                Id = model.Id,
+                CompanyId = model.CompanyId,
                 Co2Score = model.Co2Score,
                 MonthlyEmission = model.MonthlyEmission,
                 GreenEnergyPercentage = model.GreenEnergiPercentage

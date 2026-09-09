@@ -12,5 +12,9 @@ namespace FutureBankingDashboard.Library.Models
         public string ApplicationUrl { get; set; }
         public string RequiredCo2Score { get; set; }
 
+
+        // Beregnes i service-laget
+        public bool IsRelevant { get; set; }
+
     }
 }
